@@ -31,5 +31,19 @@ struct blinkApp: App {
                     }
                 }
         }
+        .commands {
+            CommandGroup(replacing: CommandGroupPlacement.appVisibility) {
+                Button("Settings") {
+                    viewModel.showSettingsWindow = true
+                }
+                .keyboardShortcut(",", modifiers: .command)
+            }
+            CommandGroup(after: CommandGroupPlacement.appVisibility) {
+                Button("Take a Break") {
+                    viewModel.showBreakWindow = true
+                }
+                .keyboardShortcut("B", modifiers: [.shift, .command])
+            }
+        }
     }
 }
