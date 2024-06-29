@@ -25,6 +25,7 @@
 		AD5917BD2C30514D00B0A95C /* DayRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5917BC2C30514D00B0A95C /* DayRating.swift */; };
 		AD5917BF2C30853A00B0A95C /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5917BE2C30853A00B0A95C /* GraphView.swift */; };
 		AD5917C12C30858F00B0A95C /* EyeScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5917C02C30858F00B0A95C /* EyeScore.swift */; };
+		ADDCFB982C30A73000CB6646 /* chime.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ADDCFB972C30A73000CB6646 /* chime.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		AD5917BC2C30514D00B0A95C /* DayRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRating.swift; sourceTree = "<group>"; };
 		AD5917BE2C30853A00B0A95C /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		AD5917C02C30858F00B0A95C /* EyeScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeScore.swift; sourceTree = SOURCE_ROOT; };
+		ADDCFB972C30A73000CB6646 /* chime.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = chime.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 		48167FE22C2FF98B0050F9CC = {
 			isa = PBXGroup;
 			children = (
+				ADDCFB972C30A73000CB6646 /* chime.mp3 */,
 				48167FED2C2FF98B0050F9CC /* blink */,
 				48167FFF2C2FF98D0050F9CC /* blinkTests */,
 				481680092C2FF98D0050F9CC /* blinkUITests */,
@@ -267,6 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				48167FF62C2FF98D0050F9CC /* Preview Assets.xcassets in Resources */,
+				ADDCFB982C30A73000CB6646 /* chime.mp3 in Resources */,
 				48167FF32C2FF98D0050F9CC /* Assets.xcassets in Resources */,
 				481680202C2FFFA20050F9CC /* Info.plist in Resources */,
 			);
