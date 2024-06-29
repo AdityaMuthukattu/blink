@@ -44,11 +44,11 @@ struct ContentView: View {
                         .fontWeight(.bold) // Makes the font bold
                         .foregroundColor(.secondary)
                     
-                    Spacer(minLength: 20)
+                    Spacer(minLength: 5)
                     DayRating(progress: progress)
                         .frame(width: 200, height: 200)
                         .padding()
-                    Spacer(minLength: 20)
+                    Spacer(minLength: 5)
                     if (globalState.totalBreaksCompleted == 1) {
                         Text("You have taken \(globalState.totalBreaksCompleted) break today!")
                             .foregroundColor(Color.secondary)
@@ -75,7 +75,7 @@ struct ContentView: View {
         }
         .sheet(isPresented: $viewModel.showSettingsWindow) {
             SettingsView(isPresented: $viewModel.showSettingsWindow)
-        }
+        }.scrollDisabled(true)
     }
     func statisticText() -> String {
         // Get the current date's weekday
