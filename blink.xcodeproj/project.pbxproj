@@ -16,6 +16,19 @@
 		4816800D2C2FF98D0050F9CC /* blinkUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4816800C2C2FF98D0050F9CC /* blinkUITestsLaunchTests.swift */; };
 		481680202C2FFFA20050F9CC /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4816801F2C2FFFA20050F9CC /* Info.plist */; };
 		481680242C30012C0050F9CC /* MenuBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481680232C30012C0050F9CC /* MenuBarController.swift */; };
+		4816803E2C30828D0050F9CC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4816802F2C30828D0050F9CC /* Preview Assets.xcassets */; };
+		4816803F2C30828D0050F9CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481680312C30828D0050F9CC /* AppDelegate.swift */; };
+		481680402C30828D0050F9CC /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481680322C30828D0050F9CC /* AppViewModel.swift */; };
+		481680412C30828D0050F9CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 481680332C30828D0050F9CC /* Assets.xcassets */; };
+		481680422C30828D0050F9CC /* blinkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481680352C30828D0050F9CC /* blinkApp.swift */; };
+		481680432C30828D0050F9CC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481680362C30828D0050F9CC /* ContentView.swift */; };
+		481680442C30828D0050F9CC /* DayRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481680372C30828D0050F9CC /* DayRating.swift */; };
+		481680452C30828D0050F9CC /* FullScreenBreakView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481680382C30828D0050F9CC /* FullScreenBreakView.swift */; };
+		481680462C30828D0050F9CC /* GlobalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481680392C30828D0050F9CC /* GlobalState.swift */; };
+		481680472C30828D0050F9CC /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4816803A2C30828D0050F9CC /* Info.plist */; };
+		481680482C30828D0050F9CC /* MenuBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4816803B2C30828D0050F9CC /* MenuBarController.swift */; };
+		481680492C30828D0050F9CC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4816803C2C30828D0050F9CC /* SettingsView.swift */; };
+		4816804B2C3082AA0050F9CC /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4816804A2C3082AA0050F9CC /* CountdownView.swift */; };
 		AD5917B32C300F0300B0A95C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5917B22C300F0300B0A95C /* AppDelegate.swift */; };
 		AD5917B52C300F4400B0A95C /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5917B42C300F4400B0A95C /* AppViewModel.swift */; };
 		AD5917B72C300F6800B0A95C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5917B62C300F6800B0A95C /* SettingsView.swift */; };
@@ -55,6 +68,20 @@
 		4816800C2C2FF98D0050F9CC /* blinkUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = blinkUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		4816801F2C2FFFA20050F9CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		481680232C30012C0050F9CC /* MenuBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarController.swift; sourceTree = "<group>"; };
+		4816802F2C30828D0050F9CC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		481680312C30828D0050F9CC /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		481680322C30828D0050F9CC /* AppViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
+		481680332C30828D0050F9CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		481680342C30828D0050F9CC /* blink.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = blink.entitlements; sourceTree = "<group>"; };
+		481680352C30828D0050F9CC /* blinkApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = blinkApp.swift; sourceTree = "<group>"; };
+		481680362C30828D0050F9CC /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		481680372C30828D0050F9CC /* DayRating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayRating.swift; sourceTree = "<group>"; };
+		481680382C30828D0050F9CC /* FullScreenBreakView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullScreenBreakView.swift; sourceTree = "<group>"; };
+		481680392C30828D0050F9CC /* GlobalState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalState.swift; sourceTree = "<group>"; };
+		4816803A2C30828D0050F9CC /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4816803B2C30828D0050F9CC /* MenuBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBarController.swift; sourceTree = "<group>"; };
+		4816803C2C30828D0050F9CC /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		4816804A2C3082AA0050F9CC /* CountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownView.swift; sourceTree = "<group>"; };
 		AD5917B22C300F0300B0A95C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AD5917B42C300F4400B0A95C /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
 		AD5917B62C300F6800B0A95C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -111,6 +138,7 @@
 		48167FED2C2FF98B0050F9CC /* blink */ = {
 			isa = PBXGroup;
 			children = (
+				4816803D2C30828D0050F9CC /* blink */,
 				AD5917BC2C30514D00B0A95C /* DayRating.swift */,
 				48167FEE2C2FF98B0050F9CC /* blinkApp.swift */,
 				AD5917BA2C30483500B0A95C /* GlobalState.swift */,
@@ -124,6 +152,7 @@
 				4816801F2C2FFFA20050F9CC /* Info.plist */,
 				AD5917B62C300F6800B0A95C /* SettingsView.swift */,
 				481680232C30012C0050F9CC /* MenuBarController.swift */,
+				4816804A2C3082AA0050F9CC /* CountdownView.swift */,
 			);
 			path = blink;
 			sourceTree = "<group>";
@@ -151,6 +180,34 @@
 				4816800C2C2FF98D0050F9CC /* blinkUITestsLaunchTests.swift */,
 			);
 			path = blinkUITests;
+			sourceTree = "<group>";
+		};
+		481680302C30828D0050F9CC /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				4816802F2C30828D0050F9CC /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4816803D2C30828D0050F9CC /* blink */ = {
+			isa = PBXGroup;
+			children = (
+				481680302C30828D0050F9CC /* Preview Content */,
+				481680312C30828D0050F9CC /* AppDelegate.swift */,
+				481680322C30828D0050F9CC /* AppViewModel.swift */,
+				481680332C30828D0050F9CC /* Assets.xcassets */,
+				481680342C30828D0050F9CC /* blink.entitlements */,
+				481680352C30828D0050F9CC /* blinkApp.swift */,
+				481680362C30828D0050F9CC /* ContentView.swift */,
+				481680372C30828D0050F9CC /* DayRating.swift */,
+				481680382C30828D0050F9CC /* FullScreenBreakView.swift */,
+				481680392C30828D0050F9CC /* GlobalState.swift */,
+				4816803A2C30828D0050F9CC /* Info.plist */,
+				4816803B2C30828D0050F9CC /* MenuBarController.swift */,
+				4816803C2C30828D0050F9CC /* SettingsView.swift */,
+			);
+			name = blink;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,9 +314,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4816803E2C30828D0050F9CC /* Preview Assets.xcassets in Resources */,
 				48167FF62C2FF98D0050F9CC /* Preview Assets.xcassets in Resources */,
+				481680472C30828D0050F9CC /* Info.plist in Resources */,
 				48167FF32C2FF98D0050F9CC /* Assets.xcassets in Resources */,
 				481680202C2FFFA20050F9CC /* Info.plist in Resources */,
+				481680412C30828D0050F9CC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,14 +344,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				481680482C30828D0050F9CC /* MenuBarController.swift in Sources */,
 				AD5917B72C300F6800B0A95C /* SettingsView.swift in Sources */,
+				4816804B2C3082AA0050F9CC /* CountdownView.swift in Sources */,
+				481680452C30828D0050F9CC /* FullScreenBreakView.swift in Sources */,
+				481680492C30828D0050F9CC /* SettingsView.swift in Sources */,
 				48167FF12C2FF98B0050F9CC /* ContentView.swift in Sources */,
 				AD5917B52C300F4400B0A95C /* AppViewModel.swift in Sources */,
 				48167FEF2C2FF98B0050F9CC /* blinkApp.swift in Sources */,
 				AD5917BD2C30514D00B0A95C /* DayRating.swift in Sources */,
+				481680442C30828D0050F9CC /* DayRating.swift in Sources */,
 				AD5917B32C300F0300B0A95C /* AppDelegate.swift in Sources */,
+				481680422C30828D0050F9CC /* blinkApp.swift in Sources */,
 				481680242C30012C0050F9CC /* MenuBarController.swift in Sources */,
 				AD5917BB2C30483500B0A95C /* GlobalState.swift in Sources */,
+				481680402C30828D0050F9CC /* AppViewModel.swift in Sources */,
+				481680432C30828D0050F9CC /* ContentView.swift in Sources */,
+				4816803F2C30828D0050F9CC /* AppDelegate.swift in Sources */,
+				481680462C30828D0050F9CC /* GlobalState.swift in Sources */,
 				AD5917B92C300FFA00B0A95C /* FullScreenBreakView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
