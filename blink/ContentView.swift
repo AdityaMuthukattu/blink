@@ -2,12 +2,15 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var viewModel: AppViewModel
+    @EnvironmentObject var globalState: GlobalState
     
     var body: some View {
         VStack(spacing: 20) {
             Text("Eye Break Reminder")
                 .font(.title)
                 .padding()
+            
+            Text("Total Breaks Completed: \(globalState.totalBreaksCompleted)")
 
             Button(action: { viewModel.showBreakWindow = true }) {
                 Text("Start Break")
