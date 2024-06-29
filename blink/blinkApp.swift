@@ -26,12 +26,35 @@ struct blinkApp: App {
                             // This block is executed when the break window is closed
                             viewModel.showBreakWindow = false
                             if breakCompleted {
-                                globalState.completeBreak()
+//                                globalState.completeBreak()
+                                viewModel.backToWorkWindow = true
                             }
                         }
-                    } else {
-                        appDelegate.closeBreakWindow()
                     }
+//                    else {
+//                        appDelegate.closeBreakWindow()
+//                    }
+                }
+                .onChange(of: viewModel.backToWorkWindow) { show in
+                    if show {
+                        appDelegate.showBackToWorkView { cancelBreak in
+                            if cancelBreak {
+                                globalState.completeBreak()
+                                
+                            }
+                        }
+//                        { breakCompleted in
+//                            // This block is executed when the break window is closed
+//                            viewModel.showBreakWindow = false
+//                            if breakCompleted {
+//                                globalState.completeBreak()
+//                                viewModel.backToWorkWindow = true
+//                            }
+//                        }
+                    }
+////                    else {
+////                        appDelegate.closeBreakWindow()
+////                    }
                 }
         }
         .commands {

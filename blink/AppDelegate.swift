@@ -4,9 +4,8 @@ import AppKit
 class AppDelegate: NSObject, NSApplicationDelegate {
     var statusItem: NSStatusItem?
     var fullScreenWindow: NSWindow?
-    typealias OnCloseCallback = (_ breakCompleted: Bool) -> Void
-
-    var onClose: OnCloseCallback?
+    var fullScreenWindow1: NSWindow? // Added for showBackToWorkView
+    var onClose: ((_ breakCompleted: Bool) -> Void)? // Updated callback type
     
     func applicationDidFinishLaunching(_ notification: Notification) {
         setupMenuBar()
@@ -34,7 +33,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NotificationCenter.default.post(name: NSNotification.Name("OpenSettings"), object: nil)
     }
     
-func showFullScreenBreakView(onClose: @escaping (_ breakCompleted: Bool) -> Void) {
+    func showFullScreenBreakView(onClose: @escaping (_ breakCompleted: Bool) -> Void) {
         self.onClose = onClose
         if fullScreenWindow == nil {
             fullScreenWindow = NSWindow(contentRect: NSScreen.main!.frame, styleMask: .borderless, backing: .buffered, defer: false)
@@ -46,14 +45,27 @@ func showFullScreenBreakView(onClose: @escaping (_ breakCompleted: Bool) -> Void
         fullScreenWindow?.makeKeyAndOrderFront(nil)
     }
     
-    @objc func closeBreakWindow() {
+    func showBackToWorkView(onClose: @escaping (_ breakCompleted: Bool) -> Void) {
+        self.onClose = onClose
+        if fullScreenWindow1 == nil {
+            fullScreenWindow1 = NSWindow(contentRect: NSScreen.main!.frame, styleMask: .borderless, backing: .buffered, defer: false)
+            fullScreenWindow1?.level = .mainMenu + 1
+            fullScreenWindow1?.isOpaque = false
+            fullScreenWindow1?.backgroundColor = .clear
+            fullScreenWindow1?.contentView = NSHostingView(rootView: BackToWorkView())
+        }
+        fullScreenWindow1?.makeKeyAndOrderFront(nil)
+    }
+    
+    @objc private func closeBreakWindow() {
         fullScreenWindow?.orderOut(nil)
         fullScreenWindow = nil
         onClose?(true)
         onClose = nil
     }
-    @objc func cancelBreakEarly() {
-        fullScreenWindow?.orderOut(nil)
+    
+    @objc private func cancelBreakEarly() {
+        fullScreenWindow?.orderOut(nil) // Update to fullScreenWindow
         fullScreenWindow = nil
         onClose?(false)
         onClose = nil
