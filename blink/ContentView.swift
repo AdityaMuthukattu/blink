@@ -9,7 +9,7 @@ struct ContentView: View {
         let numBreaksRequired = (numBreaksTaken * userBreakFrequency) / 20.0
         return numBreaksTaken / numBreaksRequired
     }
-
+    
     var body: some View {
         VStack(spacing: 10) {
             // Simple Header

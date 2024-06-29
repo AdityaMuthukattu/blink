@@ -4,7 +4,7 @@ struct FullScreenBreakView: View {
     @State private var showButton = false
     @State private var cursorPosition: CGPoint = .zero
     @State private var progress: Double = 0.0
-    private let totalTime: Double = 5.0  // Total time in seconds for the progress to reach full
+    private let totalTime: Double = 20.0  // Total time in seconds for the progress to reach full
     @State private var timer: Timer?
     @State private var workItem: DispatchWorkItem?
 
@@ -30,12 +30,11 @@ struct FullScreenBreakView: View {
                 }) {
                     Text("End Break")
                         .padding()
-                        .background(Color.gray)
-                        .foregroundColor(.white)
-                        .cornerRadius(8)
                 }
-                }
-            
+                .buttonStyle(BorderlessButtonStyle())
+                .padding(10)
+                .foregroundColor(.gray)
+            }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.black.opacity(0.8))
