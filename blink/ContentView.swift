@@ -37,28 +37,28 @@ struct ContentView: View {
             // Main Content
             ScrollView {
                 VStack(spacing: 10) {
-                    DayRating(progress: progress)
-                        .frame(width: 200, height: 200)
-                        .padding()
-
                     // Display the statistic
+                    Text("TODAY'S SCORE")
+                        .font(.largeTitle) // Makes the font larger
+                        .fontWeight(.bold) // Makes the font bold
+                        .foregroundColor(.white) // Changes the text color to white
                     Text(statisticText())
                         .padding()
                         .textCase(.uppercase)
                         .foregroundColor(Color.secondary) // Makes the font color muted
                         .font(.system(size: 12)) // Makes the font size a bit smaller
+
+                    DayRating(progress: progress)
+                        .frame(width: 200, height: 200)
+                        .padding()
+
                     Text("Total Breaks Completed: \(globalState.totalBreaksCompleted)")
 
-                    Button(action: { viewModel.showBreakWindow = true }) {
-                        Text("Start Break")
-                            .padding()
-                            .frame(minWidth: 0, maxWidth: .infinity)
-                            .background(Color.blue)
-                            .foregroundColor(.white)
-                            .cornerRadius(10)
-                            .padding(.horizontal, 20)
-                    }
-                    .buttonStyle(PlainButtonStyle()) // Apply a plain button style to remove any default styling
+                    Spacer(minLength: 50)
+
+                    GraphView(eyeScores: globalState.eyeScores)
+                        .frame(height: 200)
+                        .padding(.bottom, 50) // Increase bottom padding to 50
                 }
                 .padding()
             }
@@ -77,8 +77,11 @@ struct ContentView: View {
         guard let lastWeekData = globalState.dataForDay(day: currentWeekday, weeksAgo: 1) else {
             return "Data for last \(currentWeekday) not available"
         }
-        print(progress) 
-        let percentageDifference = ((progress - lastWeekData) /  lastWeekData) * 100
+        print(progress)
+        var percentageDifference: Float = 100.0
+        if lastWeekData != 0 {
+            percentageDifference = ((progress - lastWeekData) /  lastWeekData) * 100
+        }
         let formattedPercentage = String(format: "%.2f", abs(percentageDifference))
         
         if percentageDifference > 0 {

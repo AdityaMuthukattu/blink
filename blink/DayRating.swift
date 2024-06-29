@@ -45,9 +45,6 @@ struct DayRating: View {
                 .rotationEffect(Angle(degrees: 270.0))
                 .animation(.linear, value: progress)
             VStack {
-                Text("EYE SCORE")
-                    .font(.caption)
-                    .bold()
                 // Display the message with font and boldness applied
                 Text(message)
                     .font(.largeTitle)

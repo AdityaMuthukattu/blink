@@ -35,6 +35,8 @@
 		AD5917B92C300FFA00B0A95C /* FullScreenBreakView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5917B82C300FFA00B0A95C /* FullScreenBreakView.swift */; };
 		AD5917BB2C30483500B0A95C /* GlobalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5917BA2C30483500B0A95C /* GlobalState.swift */; };
 		AD5917BD2C30514D00B0A95C /* DayRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5917BC2C30514D00B0A95C /* DayRating.swift */; };
+		AD5917BF2C30853A00B0A95C /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5917BE2C30853A00B0A95C /* GraphView.swift */; };
+		AD5917C12C30858F00B0A95C /* EyeScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5917C02C30858F00B0A95C /* EyeScore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +90,8 @@
 		AD5917B82C300FFA00B0A95C /* FullScreenBreakView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenBreakView.swift; sourceTree = "<group>"; };
 		AD5917BA2C30483500B0A95C /* GlobalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalState.swift; sourceTree = "<group>"; };
 		AD5917BC2C30514D00B0A95C /* DayRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRating.swift; sourceTree = "<group>"; };
+		AD5917BE2C30853A00B0A95C /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
+		AD5917C02C30858F00B0A95C /* EyeScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeScore.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +142,8 @@
 		48167FED2C2FF98B0050F9CC /* blink */ = {
 			isa = PBXGroup;
 			children = (
+				AD5917BE2C30853A00B0A95C /* GraphView.swift */,
+				AD5917C02C30858F00B0A95C /* EyeScore.swift */,
 				4816803D2C30828D0050F9CC /* blink */,
 				AD5917BC2C30514D00B0A95C /* DayRating.swift */,
 				48167FEE2C2FF98B0050F9CC /* blinkApp.swift */,
@@ -353,10 +359,12 @@
 				AD5917B52C300F4400B0A95C /* AppViewModel.swift in Sources */,
 				48167FEF2C2FF98B0050F9CC /* blinkApp.swift in Sources */,
 				AD5917BD2C30514D00B0A95C /* DayRating.swift in Sources */,
+				AD5917BF2C30853A00B0A95C /* GraphView.swift in Sources */,
 				481680442C30828D0050F9CC /* DayRating.swift in Sources */,
 				AD5917B32C300F0300B0A95C /* AppDelegate.swift in Sources */,
 				481680422C30828D0050F9CC /* blinkApp.swift in Sources */,
 				481680242C30012C0050F9CC /* MenuBarController.swift in Sources */,
+				AD5917C12C30858F00B0A95C /* EyeScore.swift in Sources */,
 				AD5917BB2C30483500B0A95C /* GlobalState.swift in Sources */,
 				481680402C30828D0050F9CC /* AppViewModel.swift in Sources */,
 				481680432C30828D0050F9CC /* ContentView.swift in Sources */,

@@ -22,6 +22,24 @@ class GlobalState: ObservableObject {
     @Published var playNotificationSounds: Bool = false // chime at end of breaks
     
     @Published var historicalData: [String: [String: Int]] = [:]
+
+    var eyeScores: [EyeScore] {
+        var scores: [EyeScore] = []
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd" // Adjust this format to match your date strings
+
+        for (dateString, data) in historicalData {
+            if let date = dateFormatter.date(from: dateString),
+               let totalBreaksPrompted = data["totalBreaksPrompted"],
+               let totalBreaksCompleted = data["totalBreaksCompleted"],
+               totalBreaksPrompted != 0 {
+                let score = (totalBreaksCompleted * 100) / totalBreaksPrompted
+                scores.append(EyeScore(date: date, score: score))
+            }
+        }
+
+        return scores.sorted(by: { $0.date < $1.date }) // Assuming you want the scores sorted by date
+    }
     var pathToPastData: String? // Path to save/load historical data
     // Timer to simulate screen time increment, replace or remove with actual logic
     var screenTimeTimer: Timer?
@@ -195,12 +213,22 @@ extension GlobalState {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         var mockData: [String: [String: Int]] = [:]
 
-        for dayOffset in 1...7 {
+        let denominator = 10 // Constant denominator
+
+        // Create an array of percentages, ensuring one entry is 100%
+        var percentages = (3...8).map { Double($0) * 10.0 } // Generates 10% to 60%
+        percentages.append(100.0) // Ensure one entry is 100%
+        percentages.shuffle() // Shuffle the distribution
+
+        for (index, dayOffset) in (1...7).enumerated() {
             guard let date = Calendar.current.date(byAdding: .day, value: -dayOffset, to: Date()) else { continue }
             let dateString = dateFormatter.string(from: date)
-            // Generate random data for breaksPrompted and breaksCompleted
-            let breaksPrompted = Int.random(in: 1...5)
-            let breaksCompleted = Int.random(in: 0...breaksPrompted)
+            
+            // Use the shuffled percentages for breaksCompleted
+            let breaksPrompted = denominator
+            let percentageCompleted = percentages[index]
+            let breaksCompleted = Int(Double(breaksPrompted) * (percentageCompleted / 100.0))
+            
             mockData[dateString] = ["totalBreaksPrompted": breaksPrompted, "totalBreaksCompleted": breaksCompleted]
         }
 
@@ -247,6 +275,26 @@ extension GlobalState {
         UserDefaults.standard.set(breakFrequency, forKey: "breakFrequency")
         UserDefaults.standard.set(breakLength, forKey: "breakLength")
         UserDefaults.standard.set(playNotificationSounds, forKey: "playNotificationSounds")
+    }
+    
+    func getEyeScores() -> [EyeScore] {
+        var eyeScores: [EyeScore] = []
+        
+        // Assuming `historicalData` is a dictionary with String keys (date strings) and values as dictionaries representing data
+        for (dateString, data) in historicalData {
+            if let date = DateFormatter().date(from: dateString), // Convert dateString to Date
+               let totalBreaksPrompted = data["totalBreaksPrompted"] as? Int,
+               let totalBreaksCompleted = data["totalBreaksCompleted"] as? Int,
+               totalBreaksPrompted != 0 {
+                let score = (totalBreaksCompleted * 100) / totalBreaksPrompted
+                eyeScores.append(EyeScore(date: date, score: score))
+            } else {
+                // Handle the case where date conversion fails or there were no breaks prompted
+                // This might involve logging an error or appending a default EyeScore with a score of 0
+            }
+        }
+        
+        return eyeScores
     }
 
 }
