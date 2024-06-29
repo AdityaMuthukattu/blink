@@ -45,7 +45,7 @@ struct ContentView: View {
         }
         .padding()
         .sheet(isPresented: $viewModel.showSettingsWindow) {
-            SettingsView()
+            SettingsView(isPresented: $viewModel.showSettingsWindow)
         }
     }
 }
