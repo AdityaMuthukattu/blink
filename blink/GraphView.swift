@@ -18,7 +18,7 @@ struct GraphView: View {
                 .fontWeight(.bold) // Makes the font bold
                 .padding(.vertical, 10) // Adds vertical padding
                 .padding(.horizontal, 20) // Adds horizontal padding
-                .foregroundColor(.white) // Changes the text color to white
+                .foregroundColor(.secondary) // Changes the text color to secondary
                 .cornerRadius(10) // Rounds the corners of the background
                 .padding() // Adds more padding around the entire element for spacing
                 

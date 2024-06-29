@@ -39,21 +39,30 @@ struct ContentView: View {
             ScrollView {
                 VStack(spacing: 10) {
                     // Display the statistic
-                    Text("TODAY'S SCORE")
+                    Text("Today's Score")
                         .font(.largeTitle) // Makes the font larger
                         .fontWeight(.bold) // Makes the font bold
-                        .foregroundColor(.white) // Changes the text color to white
-                    Text(statisticText())
-                        .padding()
-                        .textCase(.uppercase)
-                        .foregroundColor(Color.secondary) // Makes the font color muted
-                        .font(.system(size: 12)) // Makes the font size a bit smaller
-
+                        .foregroundColor(.secondary)
+                    
+                    Spacer(minLength: 20)
                     DayRating(progress: progress)
                         .frame(width: 200, height: 200)
                         .padding()
-
-                    Text("Total Breaks Completed: \(globalState.totalBreaksCompleted)")
+                    Spacer(minLength: 20)
+                    if (globalState.totalBreaksCompleted == 1) {
+                        Text("You have taken \(globalState.totalBreaksCompleted) break today!")
+                            .foregroundColor(Color.secondary)
+                            .font(.system(size: 12))
+                    } else {
+                        Text("You have taken \(globalState.totalBreaksCompleted) breaks today!")
+                            .foregroundColor(Color.secondary)
+                            .font(.system(size: 12))
+                    }
+                    Text(statisticText())
+                        .foregroundColor(Color.secondary) // Makes the font color muted
+                        .font(.system(size: 12)) // Makes the font size a bit smaller
+                        .padding()
+                    
 
                     Spacer(minLength: 50)
 
@@ -86,9 +95,9 @@ struct ContentView: View {
         let formattedPercentage = String(format: "%.2f", abs(percentageDifference))
         
         if percentageDifference > 0 {
-            return "\(formattedPercentage)% higher than ‘\(currentWeekday)’ last week"
+            return "That's \(formattedPercentage)% higher than ‘\(currentWeekday)’ last week!"
         } else if percentageDifference < 0 {
-            return "\(formattedPercentage)% lower than ‘\(currentWeekday)’ last week"
+            return "That's \(formattedPercentage)% lower than ‘\(currentWeekday)’ last week"
         } else {
             return "No change from ‘\(currentWeekday)’ last week"
         }
