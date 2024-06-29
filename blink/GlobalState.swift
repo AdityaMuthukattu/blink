@@ -122,13 +122,11 @@ extension GlobalState {
         consecutiveMinutes = 0
         totalBreaksPrompted = 0
         totalBreaksCompleted = 0
-        breakFrequency = 0 // Assuming 0 is the default value. Adjust as needed.
 
         // Clear UserDefaults
         UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.consecutiveMinutes)
         UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.totalBreaksPrompted)
         UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.totalBreaksCompleted)
-        UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.breakFrequency)
     }
     
 }
