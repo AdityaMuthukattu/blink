@@ -1,5 +1,10 @@
 import SwiftUI
 
+import UserNotifications // For sending notifications
+
+import AVFoundation
+
+var audioPlayer: AVAudioPlayer?
 struct FullScreenBreakView: View {
     @State private var showButton = false
     @State private var cursorPosition: CGPoint = .zero
@@ -82,6 +87,8 @@ struct FullScreenBreakView: View {
     func scheduleCloseBreak() {
         let item = DispatchWorkItem {
             NotificationCenter.default.post(name: NSNotification.Name("CloseBreak"), object: nil)
+            playChimeSound()
+            sendBreakFinishedNotification()
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + totalTime, execute: item)
         workItem = item // Save the work item to be able to cancel it later
@@ -90,6 +97,35 @@ struct FullScreenBreakView: View {
     func resetProgressAndTimer() {
         progress = 0.0
         timer?.invalidate()
+    }
+    func playChimeSound() {
+        guard let soundURL = Bundle.main.url(forResource: "chime", withExtension: "mp3") else {
+            print("Unable to locate sound file.")
+            return
+        }
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
+            audioPlayer?.play()
+        } catch {
+            print("Unable to play the sound file.")
+        }
+    }
+
+    func sendBreakFinishedNotification() {
+        UNUserNotificationCenter.current().getNotificationSettings { settings in
+            guard settings.authorizationStatus == .authorized else {
+                print("Notifications are not authorized")
+                return
+            }
+
+            let content = UNMutableNotificationContent()
+            content.title = "Break Finished"
+            content.body = "Your break is over. Time to get back to work!"
+            content.sound = UNNotificationSound.default
+
+            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: nil) // Trigger now
+            UNUserNotificationCenter.current().add(request)
+        }
     }
 }
 
