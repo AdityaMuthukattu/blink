@@ -10,7 +10,6 @@ import Charts
 
 struct GraphView: View {
     var eyeScores: [EyeScore]
-    // 1. Calculate the average score
     var averageScore: Double {
         let totalScore = eyeScores.reduce(0) { $0 + $1.score }
         return Double(totalScore) / Double(eyeScores.count)
@@ -43,7 +42,7 @@ struct GraphView: View {
                 .foregroundColor(.secondary) // Changes the text color to secondary
                 .cornerRadius(10) // Rounds the corners of the background
                 
-                Divider()
+                
             HStack {
                 Image(systemName: "chevron.left")
                     .onTapGesture {
@@ -57,17 +56,14 @@ struct GraphView: View {
                 Text("\(formattedSevenDaysAgo) - \(formattedCurrentDate)")
                     .font(.caption)
                     .fontWeight(.bold) // Makes the font bold
-                    .padding(.horizontal, 20) // Adjust padding as needed
+                    .padding(.horizontal, 20)
                     .padding(.vertical, 10)
                     
             }
                 .padding(.leading) // Adjust padding as needed to align with the Chart
-                .padding(.vertical, 10) // Adds vertical padding
                 .frame(maxWidth: .infinity, alignment: .leading) // Align HStack to the left
-            Text("Avg: \(String(format: "%.1f", averageScore))%")
-                .font(.caption)
-                .foregroundColor(.blue)
-                .padding(.leading, 20) // Adjust padding as needed for alignment
+            Divider()
+            
             Chart {
                 ForEach(eyeScores.indices, id: \.self) { index in
                     BarMark(
@@ -80,12 +76,22 @@ struct GraphView: View {
                             .font(.caption)
                     }
                 }
-                // 2. Add an AverageLine to the Chart
-                RuleMark(
-                    y: .value("Average Score", averageScore)
-                )
-                .lineStyle(StrokeStyle(lineWidth: 1, dash: [5]))
-                .foregroundStyle(.blue)
+                
+
+        
+                 RuleMark(
+                     y: .value("Average Score", averageScore)
+                 )
+                 .annotation(position: .top, alignment: .leading) {
+                     Text("Avg: \(averageScore, specifier: "%.0f")%")
+                         .font(.caption2)
+                         .foregroundColor(.gray)
+                         .opacity(0.8)
+                 }
+                 .lineStyle(StrokeStyle(lineWidth: 4, lineCap: .round, lineJoin: .round))
+                                 .foregroundStyle(Color.gray)
+                                 .opacity(0.7)
+                                 
             }
             .chartXAxis {
                 AxisMarks(values: .stride(by: .day)) {
