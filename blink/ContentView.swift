@@ -40,7 +40,7 @@ struct ContentView: View {
                 VStack(spacing: 10) {
                     // Display the statistic
                     Text("Today's Score")
-                        .font(.largeTitle) // Makes the font larger
+                        .font(.title) // Makes the font larger
                         .fontWeight(.bold) // Makes the font bold
                         .foregroundColor(.secondary)
                     
@@ -64,7 +64,7 @@ struct ContentView: View {
                         .padding()
                     
 
-                    Spacer(minLength: 50)
+                    Spacer(minLength: 60)
 
                     GraphView(eyeScores: globalState.eyeScores)
                         .frame(height: 200)
