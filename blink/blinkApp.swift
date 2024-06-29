@@ -36,7 +36,10 @@ struct blinkApp: App {
                         appDelegate.closeBreakWindow()
                     }
                 }
+                .frame(minWidth: 400, minHeight: 400)
+                .frame(maxWidth: 400, maxHeight: 850)
         }
+        .windowResizability(.contentSize)
         .commands {
             CommandGroup(replacing: CommandGroupPlacement.appVisibility) {
                 Button("Settings") {

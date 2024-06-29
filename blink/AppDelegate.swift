@@ -21,6 +21,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         NotificationCenter.default.addObserver(self, selector: #selector(closeBreakWindow), name: NSNotification.Name("CloseBreak"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(cancelBreakEarly), name: NSNotification.Name("CancelBreak"), object: nil)
+        if let window = NSApplication.shared.windows.first {
+            window.setContentSize(NSSize(width: 400, height: 850)) // Set default size
+        }
     }
     
     private func setupMenuBar() {
