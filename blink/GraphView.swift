@@ -10,6 +10,11 @@ import Charts
 
 struct GraphView: View {
     var eyeScores: [EyeScore]
+    // 1. Calculate the average score
+    var averageScore: Double {
+        let totalScore = eyeScores.reduce(0) { $0 + $1.score }
+        return Double(totalScore) / Double(eyeScores.count)
+    }
 
     var body: some View {
         VStack {
@@ -36,6 +41,10 @@ struct GraphView: View {
                 .padding(.vertical, 10) // Adds vertical padding
                 .frame(maxWidth: .infinity, alignment: .leading) // Align HStack to the left
             Divider()
+            Text("Avg: \(String(format: "%.1f", averageScore))")
+                .font(.caption)
+                .foregroundColor(.blue)
+                .padding(.leading, 20) // Adjust padding as needed for alignment
             Chart {
                 ForEach(eyeScores.indices, id: \.self) { index in
                     BarMark(
@@ -48,6 +57,12 @@ struct GraphView: View {
                             .font(.caption)
                     }
                 }
+                // 2. Add an AverageLine to the Chart
+                RuleMark(
+                    y: .value("Average Score", averageScore)
+                )
+                .lineStyle(StrokeStyle(lineWidth: 1, dash: [5]))
+                .foregroundStyle(.blue)
             }
             .chartXAxis {
                 AxisMarks(values: .stride(by: .day)) {
