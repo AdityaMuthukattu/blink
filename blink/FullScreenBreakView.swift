@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct BreakView: View {
+struct FullScreenBreakView: View {
     var body: some View {
         VStack {
             Text("Take a Break!")
@@ -14,5 +14,10 @@ struct BreakView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.black.opacity(0.8))
         .edgesIgnoringSafeArea(.all)
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5) { // Adjust the duration as needed
+                NotificationCenter.default.post(name: NSNotification.Name("CloseBreak"), object: nil)
+            }
+        }
     }
 }

@@ -1,24 +1,33 @@
-//
-//  ContentView.swift
-//  blink
-//
-//  Created by Aditya Muthukattu on 29/6/2024.
-//
-
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var viewModel: AppViewModel
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Text("Eye Break Reminder")
+                .font(.largeTitle)
+                .padding()
+
+            Button(action: { viewModel.showBreakWindow = true }) {
+                Text("Start Break")
+                    .padding()
+                    .background(Color.blue)
+                    .foregroundColor(.white)
+                    .cornerRadius(8)
+            }
+
+            Button(action: { viewModel.showSettingsWindow = true }) {
+                Text("Settings")
+                    .padding()
+                    .background(Color.gray)
+                    .foregroundColor(.white)
+                    .cornerRadius(8)
+            }
         }
         .padding()
+        .sheet(isPresented: $viewModel.showSettingsWindow) {
+            SettingsView()
+        }
     }
-}
-
-#Preview {
-    ContentView()
 }
