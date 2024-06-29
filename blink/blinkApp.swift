@@ -38,7 +38,7 @@ struct blinkApp: App {
                 }
                 .keyboardShortcut(",", modifiers: .command)
             }
-            CommandGroup(after: CommandGroupPlacement.appVisibility) {
+            CommandMenu("Break") {
                 Button("Take a Break") {
                     viewModel.showBreakWindow = true
                 }
