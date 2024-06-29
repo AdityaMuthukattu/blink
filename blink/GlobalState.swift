@@ -17,7 +17,10 @@ class GlobalState: ObservableObject {
     @Published var isBreakActive: Bool = false // To manage break view visibility
     // Break frequency and historical data
     var defaultBreakFrequency = 20
-    @Published var breakFrequency: Int = 20
+    @Published var breakFrequency: Int = 20 // in minutes
+    @Published var breakLength: Float = 20.0 // in seconds
+    @Published var playNotificationSounds: Bool = false // chime at end of breaks
+    
     @Published var historicalData: [String: [String: Int]] = [:]
     var pathToPastData: String? // Path to save/load historical data
     // Timer to simulate screen time increment, replace or remove with actual logic
@@ -55,6 +58,8 @@ extension GlobalState {
         static let totalBreaksPrompted = "totalBreaksPrompted"
         static let totalBreaksCompleted = "totalBreaksCompleted"
         static let breakFrequency = "breakFrequency"
+        static let breakLength = "breakLength"
+        static let playNotificationSounds = "playNotificationSounds"
     }
     
     // Save simple data using UserDefaults
@@ -149,4 +154,11 @@ extension GlobalState {
         let dataForDay = historicalData[dateString]?["totalBreaksPrompted"]
         return dataForDay
     }
+    
+    func saveSettings(){
+        UserDefaults.standard.set(breakFrequency, forKey: "breakFrequency")
+        UserDefaults.standard.set(breakLength, forKey: "breakLength")
+        UserDefaults.standard.set(playNotificationSounds, forKey: "playNotificationSounds")
+    }
+
 }
