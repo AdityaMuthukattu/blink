@@ -21,7 +21,7 @@
 		AD5917B72C300F6800B0A95C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5917B62C300F6800B0A95C /* SettingsView.swift */; };
 		AD5917B92C300FFA00B0A95C /* FullScreenBreakView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5917B82C300FFA00B0A95C /* FullScreenBreakView.swift */; };
 		AD5917BB2C30483500B0A95C /* GlobalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5917BA2C30483500B0A95C /* GlobalState.swift */; };
-		AD5917BD2C30514D00B0A95C /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5917BC2C30514D00B0A95C /* ProgressBar.swift */; };
+		AD5917BD2C30514D00B0A95C /* DayRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5917BC2C30514D00B0A95C /* DayRating.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +60,7 @@
 		AD5917B62C300F6800B0A95C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		AD5917B82C300FFA00B0A95C /* FullScreenBreakView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenBreakView.swift; sourceTree = "<group>"; };
 		AD5917BA2C30483500B0A95C /* GlobalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalState.swift; sourceTree = "<group>"; };
-		AD5917BC2C30514D00B0A95C /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		AD5917BC2C30514D00B0A95C /* DayRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRating.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,7 +91,6 @@
 		48167FE22C2FF98B0050F9CC = {
 			isa = PBXGroup;
 			children = (
-				AD5917BC2C30514D00B0A95C /* ProgressBar.swift */,
 				48167FED2C2FF98B0050F9CC /* blink */,
 				48167FFF2C2FF98D0050F9CC /* blinkTests */,
 				481680092C2FF98D0050F9CC /* blinkUITests */,
@@ -112,6 +111,7 @@
 		48167FED2C2FF98B0050F9CC /* blink */ = {
 			isa = PBXGroup;
 			children = (
+				AD5917BC2C30514D00B0A95C /* DayRating.swift */,
 				48167FEE2C2FF98B0050F9CC /* blinkApp.swift */,
 				AD5917BA2C30483500B0A95C /* GlobalState.swift */,
 				AD5917B42C300F4400B0A95C /* AppViewModel.swift */,
@@ -288,7 +288,7 @@
 				48167FF12C2FF98B0050F9CC /* ContentView.swift in Sources */,
 				AD5917B52C300F4400B0A95C /* AppViewModel.swift in Sources */,
 				48167FEF2C2FF98B0050F9CC /* blinkApp.swift in Sources */,
-				AD5917BD2C30514D00B0A95C /* ProgressBar.swift in Sources */,
+				AD5917BD2C30514D00B0A95C /* DayRating.swift in Sources */,
 				AD5917B32C300F0300B0A95C /* AppDelegate.swift in Sources */,
 				481680242C30012C0050F9CC /* MenuBarController.swift in Sources */,
 				AD5917BB2C30483500B0A95C /* GlobalState.swift in Sources */,

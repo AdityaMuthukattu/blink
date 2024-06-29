@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct ProgressBar: View {
+struct DayRating: View {
     var progress: Float
     
     // Computed property to determine color based on progress or NaN
@@ -41,13 +41,18 @@ struct ProgressBar: View {
                 .rotationEffect(Angle(degrees: 270.0))
                 .animation(.linear, value: progress)
             
-            if progress.isNaN {
-                Text("-") // Display '-' if progress is NaN
-                    .font(.largeTitle)
-            } else {
-                Text(String(format: "%.0f %%", min(self.progress, 1.0)*100.0))
-                    .font(.largeTitle)
+            VStack {
+                Text("EYE SCORE")
+                    .font(.caption)
                     .bold()
+                if progress.isNaN {
+                    Text("-") // Display '-' if progress is NaN
+                        .font(.largeTitle)
+                } else {
+                    Text(String(format: "%.0f %%", min(self.progress, 1.0)*100.0))
+                        .font(.largeTitle)
+                        .bold()
+                }
             }
         }
     }

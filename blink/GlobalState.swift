@@ -138,16 +138,13 @@ extension GlobalState {
 
         // Calculate the number of days to subtract
         let daysAgo = weeksAgo * 7
-        
         // Subtract the days from today's date
         guard let targetDate = calendar.date(byAdding: .day, value: -daysAgo, to: Date()) else {
             return nil
         }
-        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let dateString = dateFormatter.string(from: targetDate)
-        
         // Access the specific value within the dictionary
         let dataForDay = historicalData[dateString]?["totalBreaksPrompted"]
         return dataForDay
