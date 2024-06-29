@@ -41,7 +41,7 @@ struct GraphView: View {
                 .padding(.vertical, 10) // Adds vertical padding
                 .frame(maxWidth: .infinity, alignment: .leading) // Align HStack to the left
             Divider()
-            Text("Avg: \(String(format: "%.1f", averageScore))")
+            Text("Avg: \(String(format: "%.1f", averageScore))%")
                 .font(.caption)
                 .foregroundColor(.blue)
                 .padding(.leading, 20) // Adjust padding as needed for alignment
