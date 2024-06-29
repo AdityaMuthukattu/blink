@@ -38,7 +38,7 @@ struct ContentView: View {
             ScrollView {
                 VStack(spacing: 10) {
                     DayRating(progress: progress)
-                        .frame(width: 150, height: 150)
+                        .frame(width: 200, height: 200)
                         .padding()
 
                     // Display the statistic
@@ -74,12 +74,11 @@ struct ContentView: View {
         let currentWeekday = dateFormatter.string(from: Date())
         
         // Use the current weekday to fetch data
-        guard let lastWeekData = globalState.dataForDay(day: currentWeekday, weeksAgo: 1),
-              let currentData = globalState.dataForDay(day: currentWeekday, weeksAgo: 0) else {
+        guard let lastWeekData = globalState.dataForDay(day: currentWeekday, weeksAgo: 1) else {
             return "Data for last \(currentWeekday) not available"
         }
-        
-        let percentageDifference = ((currentData - lastWeekData) / lastWeekData) * 100
+        print(progress) 
+        let percentageDifference = ((progress - lastWeekData) /  lastWeekData) * 100
         let formattedPercentage = String(format: "%.2f", abs(percentageDifference))
         
         if percentageDifference > 0 {

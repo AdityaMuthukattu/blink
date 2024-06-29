@@ -27,6 +27,8 @@ class GlobalState: ObservableObject {
     var screenTimeTimer: Timer?
     init() {
         startScreenTimeTracking()
+        initializePathToPastData()
+        generateMockHistoricalData()
     }
     func startScreenTimeTracking() {
         screenTimeTimer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) { [weak self] _ in
@@ -83,37 +85,63 @@ extension GlobalState {
     }
     // Save historical data to a file
     func saveHistoricalData() {
-
+        // Ensure pathToPastData is initialized and not nil
+        guard let pathToPastData = self.pathToPastData else {
+            print("Path to past data is not set.")
+            return
+        }
+        let fileURL = URL(fileURLWithPath: pathToPastData)
+        var existingData: [String: [String: Int]] = [:]
+        // Attempt to load existing data
+        do {
+            let data = try Data(contentsOf: fileURL)
+            existingData = try JSONSerialization.jsonObject(with: data, options: []) as? [String: [String: Int]] ?? [:]
+        } catch {
+            print("Could not load existing data, starting fresh: \(error)")
+        }
         // Create an instance of DateFormatter
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let currentDate = dateFormatter.string(from: Date())
 
-        // Use the current date as the key in dictionary
-        let dailySummaries = [currentDate: ["breaksPrompted": totalBreaksPrompted, "breaksCompleted": totalBreaksCompleted]]
-        if let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-            let filePath = documentDirectory.appendingPathComponent("historicalData.json")
-            do {
-                let data = try JSONSerialization.data(withJSONObject: dailySummaries, options: [])
-                try data.write(to: filePath)
-            } catch {
-                print("Failed to save historical data: \(error)")
-            }
+        // Update the existing data with new entry for today
+        existingData[currentDate] = ["totalBreaksPrompted": totalBreaksPrompted, "totalBreaksCompleted": totalBreaksCompleted]
+        // Save the updated data back to the file
+        do {
+            let updatedData = try JSONSerialization.data(withJSONObject: existingData, options: [])
+            try updatedData.write(to: fileURL)
+        } catch {
+            print("Failed to save historical data: \(error)")
         }
     }
     // Load historical data from a file
     func loadHistoricalData() {
-        if let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-            let filePath = documentDirectory.appendingPathComponent("historicalData.json")
-            do {
-                let data = try Data(contentsOf: filePath)
-                if let dailySummaries = try JSONSerialization.jsonObject(with: data, options: []) as? [String: [String: Int]] {
-                    // Store the loaded data into the historicalData property
-                    self.historicalData = dailySummaries
+        // Ensure pathToPastData is initialized and not nil
+        guard let pathToPastData = self.pathToPastData else {
+            print("Path to past data is not set.")
+            return
+        }
+        
+        let fileURL = URL(fileURLWithPath: pathToPastData)
+        
+        do {
+            let data = try Data(contentsOf: fileURL)
+            if var dailySummaries = try JSONSerialization.jsonObject(with: data, options: []) as? [String: [String: Int]] {
+                // Get today's date as a String
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                let today = dateFormatter.string(from: Date())
+                
+                // Check if the key for today's date exists, if not, create it with 0, 0 values
+                if dailySummaries[today] == nil {
+                    dailySummaries[today] = ["totalBreaksPrompted": 0, "totalBreaksCompleted": 0]
                 }
-            } catch {
-                print("Failed to load historical data: \(error)")
+                
+                // Store the updated or original data into the historicalData property
+                self.historicalData = dailySummaries
             }
+        } catch {
+            print("Failed to load historical data: \(error)")
         }
     }
     // Call this method to save data when app goes to background
@@ -123,8 +151,10 @@ extension GlobalState {
     }
     // Call this method to load data when app starts
     func loadData() {
+        print("Before loading data: \(historicalData)")
         loadSimpleData()
         loadHistoricalData()
+        print("After loading data: \(historicalData)")
     }
         // Reset stored values to default
     func resetTodayData() {
@@ -138,7 +168,8 @@ extension GlobalState {
         UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.totalBreaksCompleted)
     }
 
-    func dataForDay(day: String, weeksAgo: Int) -> Int? {
+    func dataForDay(day: String, weeksAgo: Int) -> Float? {
+        print("Current historicalData: \(historicalData)")
         let calendar = Calendar.current
 
         // Calculate the number of days to subtract
@@ -151,8 +182,65 @@ extension GlobalState {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let dateString = dateFormatter.string(from: targetDate)
         // Access the specific value within the dictionary
-        let dataForDay = historicalData[dateString]?["totalBreaksPrompted"]
-        return dataForDay
+        if let numerator = historicalData[dateString]?["totalBreaksCompleted"],
+           let denominator = historicalData[dateString]?["totalBreaksPrompted"],
+           denominator != 0 {
+            return Float(numerator) / Float(denominator)
+        } else {
+            return nil
+        }
+    }
+    func generateMockHistoricalData() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        var mockData: [String: [String: Int]] = [:]
+
+        for dayOffset in 1...7 {
+            guard let date = Calendar.current.date(byAdding: .day, value: -dayOffset, to: Date()) else { continue }
+            let dateString = dateFormatter.string(from: date)
+            // Generate random data for breaksPrompted and breaksCompleted
+            let breaksPrompted = Int.random(in: 1...5)
+            let breaksCompleted = Int.random(in: 0...breaksPrompted)
+            mockData[dateString] = ["totalBreaksPrompted": breaksPrompted, "totalBreaksCompleted": breaksCompleted]
+        }
+
+        // Ensure pathToPastData is initialized and not nil
+        guard let pathToPastData = self.pathToPastData else {
+            print("Path to past data is not set.")
+            return
+        }
+
+        let fileURL = URL(fileURLWithPath: pathToPastData)
+
+        do {
+            let data = try JSONSerialization.data(withJSONObject: mockData, options: [])
+            try data.write(to: fileURL)
+            print("Mock data successfully saved.")
+        } catch {
+            print("Failed to save mock data: \(error)")
+        }
+    }
+    func initializePathToPastData() {
+        let fileManager = FileManager.default
+        do {
+            // Get the Application Support directory for the current user
+            let appSupportURL = try fileManager.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+            
+            // Create a subdirectory for your app if it doesn't already exist
+            let appDirectoryURL = appSupportURL.appendingPathComponent("Blink", isDirectory: true)
+            if !fileManager.fileExists(atPath: appDirectoryURL.path) {
+                try fileManager.createDirectory(at: appDirectoryURL, withIntermediateDirectories: true, attributes: nil)
+            }
+            
+            // Specify the filename for your historical data
+            let dataFileURL = appDirectoryURL.appendingPathComponent("HistoricalData.json")
+            
+            // Set the path to the historical data file
+            pathToPastData = dataFileURL.path
+        } catch {
+            print("Failed to initialize path to past data: \(error)")
+            pathToPastData = nil
+        }
     }
     
     func saveSettings(){
