@@ -12,10 +12,10 @@ struct FullScreenBreakView: View {
         VStack {
             Text("Take a Break!")
                 .font(.largeTitle)
-                .foregroundColor(.white)
+                .foregroundColor(.secondary)
                 .padding()
             Text("Look away from the screen and relax your eyes.")
-                .foregroundColor(.white)
+                .foregroundColor(.secondary)
                 .padding()
                 .font(.system(.body, design: .default)) // Using the San Francisco font in body style
                 .fontWeight(.regular)
@@ -33,11 +33,13 @@ struct FullScreenBreakView: View {
                 }
                 .buttonStyle(BorderlessButtonStyle())
                 .padding(10)
-                .foregroundColor(.gray)
+                .foregroundColor(.secondary)
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.black.opacity(0.8))
+        // .background(Color.secondary.opacity(0.8))
+//        .background(TintedBlurView(material: .hudWindow, blendingMode: .behindWindow).edgesIgnoringSafeArea(.all))
+        .background(TintedBlurView().edgesIgnoringSafeArea(.all))
         .edgesIgnoringSafeArea(.all)
         .onAppear {
             resetProgressAndTimer()
@@ -114,3 +116,20 @@ struct LinearProgressViewStyle: ProgressViewStyle {
     }
 }
 
+
+struct TintedBlurView: NSViewRepresentable {
+    func makeNSView(context: Context) -> NSVisualEffectView {
+        let view = NSVisualEffectView()
+        view.blendingMode = .behindWindow
+        view.material = .hudWindow
+        view.state = .active
+        view.wantsLayer = true
+        view.layer?.backgroundColor = Color.secondary.cgColor
+        return view
+    }
+
+    func updateNSView(_ nsView: NSVisualEffectView, context: Context) {
+//        view.material = material
+//        view.blendingMode = blendingMode
+    }
+}
