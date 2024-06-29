@@ -4,10 +4,11 @@ struct ContentView: View {
     @EnvironmentObject var viewModel: AppViewModel
     @EnvironmentObject var globalState: GlobalState
     private var progress: Float {
-        let numBreaksTaken = Float(globalState.totalBreaksCompleted)
+        let numBreaksTaken = Float(globalState.totalBreaksPrompted)
+        let breaksCompleted = Float(globalState.totalBreaksCompleted)
         let userBreakFrequency = Float(globalState.breakFrequency)
         let numBreaksRequired = (numBreaksTaken * userBreakFrequency) / 20.0
-        return numBreaksTaken / numBreaksRequired
+        return breaksCompleted / numBreaksRequired
     }
     
     var body: some View {

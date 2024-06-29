@@ -21,10 +21,13 @@ struct blinkApp: App {
                 }
                 .onChange(of: viewModel.showBreakWindow) { show in
                     if show {
-                        appDelegate.showFullScreenBreakView {
+                        globalState.totalBreaksPrompted += 1
+                        appDelegate.showFullScreenBreakView { breakCompleted in
                             // This block is executed when the break window is closed
                             viewModel.showBreakWindow = false
-                            globalState.completeBreak()
+                            if breakCompleted {
+                                globalState.completeBreak()
+                            }
                         }
                     } else {
                         appDelegate.closeBreakWindow()

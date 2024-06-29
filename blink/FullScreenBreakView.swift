@@ -76,7 +76,7 @@ struct FullScreenBreakView: View {
     func closeBreak() {
         timer?.invalidate()
         workItem?.cancel() // Cancel the scheduled task
-        NotificationCenter.default.post(name: NSNotification.Name("CloseBreak"), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name("CancelBreak"), object: nil)
     }
     
     func scheduleCloseBreak() {

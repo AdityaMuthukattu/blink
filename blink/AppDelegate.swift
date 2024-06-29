@@ -4,11 +4,14 @@ import AppKit
 class AppDelegate: NSObject, NSApplicationDelegate {
     var statusItem: NSStatusItem?
     var fullScreenWindow: NSWindow?
-    private var onClose: (() -> Void)? 
+    typealias OnCloseCallback = (_ breakCompleted: Bool) -> Void
+
+    var onClose: OnCloseCallback?
     
     func applicationDidFinishLaunching(_ notification: Notification) {
         setupMenuBar()
         NotificationCenter.default.addObserver(self, selector: #selector(closeBreakWindow), name: NSNotification.Name("CloseBreak"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(cancelBreakEarly), name: NSNotification.Name("CancelBreak"), object: nil)
     }
     
     private func setupMenuBar() {
@@ -31,7 +34,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NotificationCenter.default.post(name: NSNotification.Name("OpenSettings"), object: nil)
     }
     
-    func showFullScreenBreakView(onClose: @escaping () -> Void) {
+func showFullScreenBreakView(onClose: @escaping (_ breakCompleted: Bool) -> Void) {
         self.onClose = onClose
         if fullScreenWindow == nil {
             fullScreenWindow = NSWindow(contentRect: NSScreen.main!.frame, styleMask: .borderless, backing: .buffered, defer: false)
@@ -46,7 +49,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @objc func closeBreakWindow() {
         fullScreenWindow?.orderOut(nil)
         fullScreenWindow = nil
-        onClose?()
+        onClose?(true)
+        onClose = nil
+    }
+    @objc func cancelBreakEarly() {
+        fullScreenWindow?.orderOut(nil)
+        fullScreenWindow = nil
+        onClose?(false)
         onClose = nil
     }
 }
