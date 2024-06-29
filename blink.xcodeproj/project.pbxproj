@@ -15,7 +15,6 @@
 		4816800B2C2FF98D0050F9CC /* blinkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4816800A2C2FF98D0050F9CC /* blinkUITests.swift */; };
 		4816800D2C2FF98D0050F9CC /* blinkUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4816800C2C2FF98D0050F9CC /* blinkUITestsLaunchTests.swift */; };
 		481680202C2FFFA20050F9CC /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4816801F2C2FFFA20050F9CC /* Info.plist */; };
-		481680222C3000E80050F9CC /* BreakView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481680212C3000E80050F9CC /* BreakView.swift */; };
 		481680242C30012C0050F9CC /* MenuBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481680232C30012C0050F9CC /* MenuBarController.swift */; };
 		AD5917B32C300F0300B0A95C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5917B22C300F0300B0A95C /* AppDelegate.swift */; };
 		AD5917B52C300F4400B0A95C /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5917B42C300F4400B0A95C /* AppViewModel.swift */; };
@@ -53,7 +52,6 @@
 		4816800A2C2FF98D0050F9CC /* blinkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = blinkUITests.swift; sourceTree = "<group>"; };
 		4816800C2C2FF98D0050F9CC /* blinkUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = blinkUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		4816801F2C2FFFA20050F9CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		481680212C3000E80050F9CC /* BreakView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakView.swift; sourceTree = "<group>"; };
 		481680232C30012C0050F9CC /* MenuBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarController.swift; sourceTree = "<group>"; };
 		AD5917B22C300F0300B0A95C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AD5917B42C300F4400B0A95C /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
@@ -118,7 +116,6 @@
 				48167FF72C2FF98D0050F9CC /* blink.entitlements */,
 				48167FF42C2FF98D0050F9CC /* Preview Content */,
 				4816801F2C2FFFA20050F9CC /* Info.plist */,
-				481680212C3000E80050F9CC /* BreakView.swift */,
 				AD5917B62C300F6800B0A95C /* SettingsView.swift */,
 				481680232C30012C0050F9CC /* MenuBarController.swift */,
 			);
@@ -283,7 +280,6 @@
 			files = (
 				AD5917B72C300F6800B0A95C /* SettingsView.swift in Sources */,
 				48167FF12C2FF98B0050F9CC /* ContentView.swift in Sources */,
-				481680222C3000E80050F9CC /* BreakView.swift in Sources */,
 				AD5917B52C300F4400B0A95C /* AppViewModel.swift in Sources */,
 				48167FEF2C2FF98B0050F9CC /* blinkApp.swift in Sources */,
 				AD5917B32C300F0300B0A95C /* AppDelegate.swift in Sources */,

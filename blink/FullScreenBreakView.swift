@@ -15,7 +15,7 @@ struct FullScreenBreakView: View {
         .background(Color.black.opacity(0.8))
         .edgesIgnoringSafeArea(.all)
         .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5) { // Adjust the duration as needed
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) { // Adjust the duration as needed
                 NotificationCenter.default.post(name: NSNotification.Name("CloseBreak"), object: nil)
             }
         }

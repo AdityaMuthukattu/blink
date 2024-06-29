@@ -4,6 +4,7 @@ import AppKit
 class AppDelegate: NSObject, NSApplicationDelegate {
     var statusItem: NSStatusItem?
     var fullScreenWindow: NSWindow?
+    private var onClose: (() -> Void)? 
     
     func applicationDidFinishLaunching(_ notification: Notification) {
         setupMenuBar()
@@ -30,7 +31,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NotificationCenter.default.post(name: NSNotification.Name("OpenSettings"), object: nil)
     }
     
-    func showFullScreenBreakView() {
+    func showFullScreenBreakView(onClose: @escaping () -> Void) {
+        self.onClose = onClose
         if fullScreenWindow == nil {
             fullScreenWindow = NSWindow(contentRect: NSScreen.main!.frame, styleMask: .borderless, backing: .buffered, defer: false)
             fullScreenWindow?.level = .mainMenu + 1
@@ -44,5 +46,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @objc func closeBreakWindow() {
         fullScreenWindow?.orderOut(nil)
         fullScreenWindow = nil
+        onClose?()
+        onClose = nil
     }
 }

@@ -4,7 +4,6 @@ import SwiftUI
 struct blinkApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @StateObject private var viewModel = AppViewModel()
-    
     var body: some Scene {
         WindowGroup {
             ContentView()
@@ -19,7 +18,10 @@ struct blinkApp: App {
                 }
                 .onChange(of: viewModel.showBreakWindow) { show in
                     if show {
-                        appDelegate.showFullScreenBreakView()
+                        appDelegate.showFullScreenBreakView {
+                            // This block is executed when the break window is closed
+                            viewModel.showBreakWindow = false
+                        }
                     } else {
                         appDelegate.closeBreakWindow()
                     }
