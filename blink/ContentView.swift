@@ -22,7 +22,7 @@ struct ContentView: View {
                 // Settings Button with Gear Icon
                 Button(action: { viewModel.showSettingsWindow = true }) {
                     Image(systemName: "gear")
-                        .foregroundColor(.white)
+                        .foregroundColor(Color.secondary)
                         .imageScale(.large) // Adjust the scale of the image
                         .font(.system(size: 18)) // Specify the font size to make the icon larger
                         .padding(3) // Adjust padding around the icon for better touch area without making it look bulky
