@@ -95,9 +95,9 @@ struct ContentView: View {
         let formattedPercentage = String(format: "%.2f", abs(percentageDifference))
         
         if percentageDifference > 0 {
-            return "Your eye score's \(formattedPercentage)% higher than \(currentWeekday) last week"
+            return "Your eye score is \(formattedPercentage)% higher than \(currentWeekday) last week"
         } else if percentageDifference < 0 {
-            return "Your eye score's \(formattedPercentage)% lower than \(currentWeekday) last week"
+            return "Your eye score is \(formattedPercentage)% lower than \(currentWeekday) last week"
         } else {
             return "No change from \(currentWeekday) last week"
         }
