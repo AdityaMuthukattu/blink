@@ -7,7 +7,7 @@ From work to leisure, people are spending increasing amounts of their day lookin
 * [Screenshots](#screenshots)
 * [How we built it](#how-we-built-it)
 * [Challenges we ran into](#challenges-we-ran-into)
-* [Accomplishments that we're proud of](#accomplishments-that-we-re-proud-of)
+* [Accomplishments that we're proud of](#accomplishments-that-we're-proud-of)
 * [What we learned](#what-we-learned)
  
 ## What it does
